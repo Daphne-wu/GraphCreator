@@ -3,14 +3,14 @@ class Vertex
 {
 public: 
 	
-	Vertex(int v);
+	Vertex(char v);
 	//~Vertex();
 
-	int getLabel();
-	void setLabel(int v);
+	char getLabel();
+	void setLabel(char v);
 	int getDistance();
 	void setDistance(int d);
 
-	int label; 
+	char label; 
 	int distance;
 };
