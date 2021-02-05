@@ -1,5 +1,6 @@
 //Daphne Wu
 //Graph creator program holds vertex and edge connections
+//Using a vector implementation
 
 #include <iostream>
 #include <vector>
