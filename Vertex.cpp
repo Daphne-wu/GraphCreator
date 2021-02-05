@@ -1,16 +1,16 @@
 #include "Vertex.h"
 
 
-Vertex::Vertex(int v) {
+Vertex::Vertex(char v) {
 	label = v; 
 	distance = -1;
 }
 
-int Vertex::getLabel() {
+char Vertex::getLabel() {
 	return label;
 }
 
-void Vertex::setLabel(int inLabel) {
+void Vertex::setLabel(char inLabel) {
 	label = inLabel;
 }
 
