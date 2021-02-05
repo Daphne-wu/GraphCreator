@@ -12,12 +12,12 @@
 using namespace std;
 
 //function prototypes
-void addVertex(int v, vector<Vertex*> &vertices);
-void removeVertex(int v, vector<Vertex*> &vertices, vector<Edge*> &edges);
-void addEdge(int start, int end, int weight, vector<Vertex*> &vertices, vector<Edge*> &edges);
-void removeEdge(int start, int end, vector<Vertex*> &vertices, vector<Edge*> &edges);
+void addVertex(char v, vector<Vertex*> &vertices);
+void removeVertex(char v, vector<Vertex*> &vertices, vector<Edge*> &edges);
+void addEdge(char start, char end, int weight, vector<Vertex*> &vertices, vector<Edge*> &edges);
+void removeEdge(char start, char end, vector<Vertex*> &vertices, vector<Edge*> &edges);
 void visual(vector<Vertex*> &vertices, vector<Edge*> &edges);
-void shortestPath(int start, int end, vector<Vertex*> &vertices, vector<Edge*> &edges);
+void shortestPath(char start, char end, vector<Vertex*> &vertices, vector<Edge*> &edges);
 
 
 int main() {
@@ -41,7 +41,7 @@ int main() {
             // if Vertex
             if (strcmp(input, "VERTEX") == 0) {
                 cout << "Enter the label for the vertex: ";
-                int v;
+                char v;
                 cin >> v;
                 cin.get();
                 addVertex(v, vertices);
@@ -49,15 +49,15 @@ int main() {
             // if Edge
             else if (strcmp(input, "EDGE") == 0) {
                 cout << "Enter the label of the starting vertex: ";
-                int s;
+                char s;
                 cin >> s;
                 cin.get();
                 cout << "Enter the label of the ending vertex: ";
-                int e;
+                char e;
                 cin >> e;
                 cin.get();
                 cout << "Enter the weight of the edge: ";
-                int weight;
+                char weight;
                 cin >> weight;
                 cin.get();
                 addEdge(s, e, weight, vertices, edges);
@@ -73,7 +73,7 @@ int main() {
             // if vertex
             if (strcmp(input, "VERTEX") == 0) {
                 cout << "Enter the label of the vertex you would like to remove: ";
-                int v;
+                char v;
                 cin >> v;
                 cin.get();
                 removeVertex(v, vertices, edges);
@@ -81,11 +81,11 @@ int main() {
             // if edge
             else if (strcmp(input, "EDGE") == 0) {
                 cout << "Enter the label of the starting vertex: ";
-                int s;
+                char s;
                 cin >> s;
                 cin.get();
                 cout << "Enter the label of the ending vertex: ";
-                int e;
+                char e;
                 cin >> e;
                 cin.get();
                 removeEdge(s, e, vertices, edges);
@@ -94,11 +94,11 @@ int main() {
         // if want to find the shortest path between two vertices
         else if(strcmp(input, "FINDSP") == 0) {
             cout << "Enter the label of the starting vertex: ";
-            int s;
+            char s;
             cin >> s;
             cin.get();
             cout << "Enter the label of the ending vertex: ";
-            int e;
+            char e;
             cin >> e;
             cin.get();
             shortestPath(s, e, vertices, edges);
@@ -124,7 +124,7 @@ int main() {
 
 
 // checks to see if the vertex label already is in the list, otherwise, the label is pushed to the vector
-void addVertex(int v, vector<Vertex*> &vertices) {
+void addVertex(char v, vector<Vertex*> &vertices) {
     Vertex* vertex = new Vertex(v);
     bool found = false; 
     for (vector<Vertex*>::iterator it = (vertices).begin(); it != (vertices).end(); ++it) {
@@ -143,7 +143,7 @@ void addVertex(int v, vector<Vertex*> &vertices) {
 }
 
 // adds an edge that connects two vertices
-void addEdge(int startLabel, int endLabel, int weight, vector<Vertex*> &vertices, vector<Edge*> &edges) {
+void addEdge(char startLabel, char endLabel, int weight, vector<Vertex*> &vertices, vector<Edge*> &edges) {
     Edge* edge = new Edge();
     Vertex* start = NULL;
     Vertex* end = NULL;
@@ -194,7 +194,7 @@ void addEdge(int startLabel, int endLabel, int weight, vector<Vertex*> &vertices
 }
 
 // removes the edge connecting two vertices
-void removeEdge(int startLabel, int endLabel, vector<Vertex*> &vertices, vector<Edge*> &edges) {
+void removeEdge(char startLabel, char endLabel, vector<Vertex*> &vertices, vector<Edge*> &edges) {
     Vertex* start = NULL;
     Vertex* end = NULL;
     bool exists = false;
@@ -240,7 +240,7 @@ void removeEdge(int startLabel, int endLabel, vector<Vertex*> &vertices, vector<
 }
 
 // removes vertex from  graph
-void removeVertex(int v, vector<Vertex*> &vertices, vector<Edge*> &edges) {
+void removeVertex(char v, vector<Vertex*> &vertices, vector<Edge*> &edges) {
     bool connected = false;
     int max = edges.size();
     int count = 0;
@@ -296,7 +296,7 @@ void removeVertex(int v, vector<Vertex*> &vertices, vector<Edge*> &edges) {
 }
 
 //dijkstra algorithm to find shortes path with help from wiki and pranav sharma
-void shortestPath(int startLabel, int endLabel, vector<Vertex*> &vertices, vector<Edge*> &edges) {
+void shortestPath(char startLabel, char endLabel, vector<Vertex*> &vertices, vector<Edge*> &edges) {
     Vertex* start = NULL;
     Vertex* end = NULL;
 
